@@ -21,4 +21,5 @@ namespace LNusuarioOCD
         public string Nombre { get => nombre; set => nombre = value; }
         #endregion
     }
+
 }
