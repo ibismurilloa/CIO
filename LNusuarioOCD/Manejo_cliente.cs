@@ -8,5 +8,9 @@ namespace LNusuarioOCD
 {
     public class Manejo_cliente
     {
+
+
+        #region propiedades
+        #endregion
     }
 }
