@@ -11,5 +11,9 @@ namespace LNusuarioOCD
         #region atributo
         private string cedula;
         #endregion
+
+
+        #region propiedades
+        #endregion
     }
 }
