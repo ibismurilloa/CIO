@@ -2,4 +2,3 @@
 
 ----tabla cliente creada por oscar correa-----
 
-create 
