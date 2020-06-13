@@ -8,5 +8,8 @@ namespace LNusuarioOCD
 {
     public class Manejo_cliente
     {
+        #region atributo
+        private string cedula;
+        #endregion
     }
 }
