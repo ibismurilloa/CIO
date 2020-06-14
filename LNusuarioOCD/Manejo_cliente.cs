@@ -19,6 +19,7 @@ namespace LNusuarioOCD
         #region propiedades
         public string Id_direccion { get => id_direccion; set => id_direccion = value; }
         public string Nombre { get => nombre; set => nombre = value; }
+        public string Cedula { get => cedula; set => cedula = value; }
         #endregion
     }
 
