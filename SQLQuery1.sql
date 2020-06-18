@@ -412,7 +412,7 @@ create procedure usp_eliminar_direccion
 @id_direccion varchar (20)
 as
 begin
-	delete from tb_direccion where id_direccion=@direccion
+	delete from tb_direccion where id_direccion=@id_direccion
 end
 --guardar mantenimiento oscar correa david
 create procedure usp_guardar_mantenimiento
@@ -460,3 +460,53 @@ as
 begin
 	delete from tb_mantenimiento where id_mantenimiento=@id_mantenimiento
 end
+
+--llaves foraneas 
+alter table tb_mantenimiento 
+add constraint FK_tb_mantenimiento_matricula_CAMIONES_MATRICULA
+foreign key(matricula)
+references CAMIONES (MATRICULA) 
+
+--prueba de llave foranea
+execute usp_guardar_mantenimiento '1', '1010',  '27 junio', 'cambio aceite' 
+execute USP__ACTULIZAR_CAMIONES '1010', '100', '14CV', 'FERRARI', 'DOBLE' 
+
+--execute 
+execute usp_guardar_destinatario '54321', 'CRISTIAN', '56789', '1'
+select *from tb_destinatrio 
+
+execute usp_guardar_direccion '1', 'carrera', '94', '65', 'b', '32', '1'  
+execute USP_GUARDAR_CIUDAD '1', 'MEDELLIN', '1'  
+
+--MAS LLAVES FORANEAS 
+alter table CAMIONES 
+add constraint FK_CAMIONES_CED_CAMIONERO_CAMIONERO_CED_CAMIONERO
+foreign key (CED_CAMIONERO)
+references CAMIONERO (CED_CAMIONERO) 
+
+alter table PAQUETES
+add constraint FK_PAQUETES_CED_CAMIONERO_PAQUETES_DNI_CAMIONERO
+foreign key (DNI_CAMIONERO)
+references CAMIONERO (CED_CAMIONERO) 
+
+alter table PAQUETES
+add constraint FK_PAQUETES_CEDULA_DES_tb_destinatrio_cedula
+foreign key (CEDULA_DES)
+references tb_destinatrio (cedula) 
+
+alter table tb_destinatrio alter column cedula varchar(20) not null
+
+alter table tb_destinatrio add primary key (cedula)
+
+
+
+alter table tb_destinatrio
+add constraint tb_destinatrio_id_direccion_direccion_id_direccion
+foreign key (id_direccion)
+references tb_direccion (id_direccion) 
+
+alter table tb_direccion
+add constraint FK_TB_DIRECCION__ID_CIUDAD_CIUDAD_ID_CIUDAD
+foreign key (id_ciudad)
+references CIUDADES (ID_CIUDAD) 
+
